@@ -41,59 +41,57 @@ European Union's Horizon Europe Research and Innovation Programme (ID No 1010595
 <!-- community: inbo -->
 
 <!-- description: start -->
-This repository contains scripts to create the b3data [frictionless](https://docs.ropensci.org/frictionless/) data package. This data package contains the data resources for the [b3verse](https://docs.b-cubed.eu/guides/b3verse/). The data package will be published on [Zenodo](https://zenodo.org/) from where the datasets can be imported in R using the [frictionless](https://docs.ropensci.org/frictionless/) R package.
+This repository contains scripts to create the b3data [frictionless](https://docs.ropensci.org/frictionless/) data package. This data package includes data resources used across the [b3verse](https://docs.b-cubed.eu/guides/b3verse/) and will be published on [Zenodo](https://zenodo.org/).
 <!-- description: end -->
 
 This code is developed in context of **T5.5** of the [B-Cubed project](https://b-cubed.eu/).
 
-### b3data data package
+## 📦 The `b3data` data package
 
-The b3data data package is itself is available here (*URL will be provided when published*).
-This data package contains the data resources for the [b3verse](https://docs.b-cubed.eu/guides/b3verse/).
-It is created using the [frictionless](https://docs.ropensci.org/frictionless/) R package and the datasets can be imported in R using functions provided by **frictionless**.
+Once published, the data package will be available here:
 
-**Step 1.** Load the **frictionless** R package
+> 🕐 *URL will be provided when available*
+
+Datasets can be imported in R like this:
+
+### Step 1 — Load the frictionless R package
 
 ```{r, echo=FALSE}
 # nolint start
 ```
 
 ```{r}
-#install.packages("frictionless")
+# install.packages("frictionless")
 library(frictionless)
 ```
 
-**Step 2.** Read the descriptor file of the data package from Zenodo and look at the contents
+### Step 2 — Read the package descriptor from Zenodo
 
-> This is an example based on an other data package. b3data will be published soon.
+> This example uses a placeholder data package; replace with the final URL when ready.
 
 ```{r}
 b3data_package <- read_package("https://zenodo.org/records/10053702/files/datapackage.json")
 b3data_package
 ```
 
-The following datasets are included:
+### Step 3 — Import a dataset
 
-> coming soon
-
-**Step 3.** Import dataset of interest from the data package
-
-Tabular data can be imported straightforward using the `read_resource()` function.
+Tabular datasets can be loaded using `read_resource()`.
 
 ```{r}
 gps <- read_resource(b3data_package, "gps")
-gps
+head(gps)
 ```
 
-Other datatypes need to be read from URL using specific packages (e.g. **sf** for spatial data or **terra** for raster data).
+For non-tabular resources (e.g. spatial or raster data), use packages like `sf` or `terra`.
 
-> example coming soon
+> Example coming soon.
 
 ```{r, echo=FALSE}
 # nolint end
 ```
 
-### Repo structure
+## 📁 Repository structure
 
 ```
 ├── source                         ├ R markdown files

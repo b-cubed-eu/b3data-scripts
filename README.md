@@ -26,37 +26,32 @@ Horizon Europe Research and Innovation Programme (ID No 101059592)[^7]
 
 This repository contains scripts to create the b3data
 [frictionless](https://docs.ropensci.org/frictionless/) data package.
-This data package contains the data resources for the
-[b3verse](https://docs.b-cubed.eu/guides/b3verse/). The data package
-will be published on [Zenodo](https://zenodo.org/) from where the
-datasets can be imported in R using the
-[frictionless](https://docs.ropensci.org/frictionless/) R package.
-<!-- description: end -->
+This data package includes data resources used across the
+[b3verse](https://docs.b-cubed.eu/guides/b3verse/) and will be published
+on [Zenodo](https://zenodo.org/). <!-- description: end -->
 
 This code is developed in context of **T5.5** of the [B-Cubed
 project](https://b-cubed.eu/).
 
-### b3data data package
+## 📦 The `b3data` data package
 
-The b3data data package is itself is available here (*URL will be
-provided when published*). This data package contains the data resources
-for the [b3verse](https://docs.b-cubed.eu/guides/b3verse/). It is
-created using the
-[frictionless](https://docs.ropensci.org/frictionless/) R package and
-the datasets can be imported in R using functions provided by
-**frictionless**.
+Once published, the data package will be available here:
 
-**Step 1.** Load the **frictionless** R package
+> 🕐 *URL will be provided when available*
+
+Datasets can be imported in R like this:
+
+### Step 1 — Load the frictionless R package
 
 ``` r
-#install.packages("frictionless")
+# install.packages("frictionless")
 library(frictionless)
 ```
 
-**Step 2.** Read the data package from Zenodo and look at the contents
+### Step 2 — Read the package descriptor from Zenodo
 
-> This is an example based on an other data package. b3data will be
-> published soon.
+> This example uses a placeholder data package; replace with the final
+> URL when ready.
 
 ``` r
 b3data_package <- read_package("https://zenodo.org/records/10053702/files/datapackage.json")
@@ -69,38 +64,37 @@ b3data_package
 #> Use `unclass()` to print the Data Package as a list.
 ```
 
-The following datasets are included:
+### Step 3 — Import a dataset
 
-> coming soon
-
-**Step 3.** Import dataset of interest from the data package
+Tabular datasets can be loaded using `read_resource()`.
 
 ``` r
 gps <- read_resource(b3data_package, "gps")
-gps
-#> # A tibble: 73,047 × 21
-#>     `event-id` visible timestamp           `location-long` `location-lat`
-#>          <dbl> <lgl>   <dttm>                        <dbl>          <dbl>
-#>  1 14256075762 TRUE    2018-05-25 16:11:37            4.25           51.3
-#>  2 14256075763 TRUE    2018-05-25 16:16:41            4.25           51.3
-#>  3 14256075764 TRUE    2018-05-25 16:21:29            4.25           51.3
-#>  4 14256075765 TRUE    2018-05-25 16:26:28            4.25           51.3
-#>  5 14256075766 TRUE    2018-05-25 16:31:21            4.25           51.3
-#>  6 14256075767 TRUE    2018-05-25 16:36:09            4.25           51.3
-#>  7 14256075768 TRUE    2018-05-25 16:40:57            4.25           51.3
-#>  8 14256075769 TRUE    2018-05-25 16:45:55            4.25           51.3
-#>  9 14256075770 TRUE    2018-05-25 16:50:49            4.25           51.3
-#> 10 14256075771 TRUE    2018-05-25 16:55:36            4.25           51.3
-#> # ℹ 73,037 more rows
+head(gps)
+#> # A tibble: 6 × 21
+#>    `event-id` visible timestamp           `location-long` `location-lat`
+#>         <dbl> <lgl>   <dttm>                        <dbl>          <dbl>
+#> 1 14256075762 TRUE    2018-05-25 16:11:37            4.25           51.3
+#> 2 14256075763 TRUE    2018-05-25 16:16:41            4.25           51.3
+#> 3 14256075764 TRUE    2018-05-25 16:21:29            4.25           51.3
+#> 4 14256075765 TRUE    2018-05-25 16:26:28            4.25           51.3
+#> 5 14256075766 TRUE    2018-05-25 16:31:21            4.25           51.3
+#> 6 14256075767 TRUE    2018-05-25 16:36:09            4.25           51.3
 #> # ℹ 16 more variables: `bar:barometric-pressure` <dbl>,
 #> #   `external-temperature` <dbl>, `gps:dop` <dbl>, `gps:satellite-count` <dbl>,
 #> #   `gps-time-to-fix` <dbl>, `ground-speed` <dbl>, heading <dbl>,
 #> #   `height-above-msl` <dbl>, `location-error-numerical` <dbl>,
 #> #   `manually-marked-outlier` <lgl>, `vertical-error-numerical` <dbl>,
-#> #   `sensor-type` <chr>, `individual-taxon-canonical-name` <chr>, …
+#> #   `sensor-type` <chr>, `individual-taxon-canonical-name` <chr>,
+#> #   `tag-local-identifier` <chr>, `individual-local-identifier` <chr>, …
 ```
 
-### Repo structure
+For non-tabular resources (e.g. spatial or raster data), use packages
+like `sf` or `terra`.
+
+> Example coming soon.
+
+## 📁 Repository structure
 
     ├── source                         ├ R markdown files
     │   └── R                          ├ R scripts
