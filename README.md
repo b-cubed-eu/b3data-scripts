@@ -1,6 +1,6 @@
 <!-- badges: start -->
 ![GitHub](https://img.shields.io/github/license/b-cubed-eu/b3data-scripts)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/b-cubed-eu/b3data-scripts/check-project)
+[![repo status](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 ![GitHub repo size](https://img.shields.io/github/repo-size/b-cubed-eu/b3data-scripts)
 <!-- badges: end -->
 
