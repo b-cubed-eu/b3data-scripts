@@ -1,0 +1,46 @@
+{
+  "access_right": "open",
+  "title": "Scripts used to create the frictionless b3data datapackage",
+  "description": "<p>This repository contains scripts to create the b3data <a href=\"https://docs.ropensci.org/frictionless/\">frictionless<\/a> datapackage. This datapackage contains the data resources for the <a href=\"https://docs.b-cubed.eu/guides/b3verse/\">b3verse<\/a>. The datapackage will be published on <a href=\"https://zenodo.org/\">Zenodo<\/a> from where the datasets can be imported in R using the <a href=\"https://docs.ropensci.org/frictionless/\">frictionless<\/a> R package.<\/p>",
+  "keywords": [
+    "datapackage",
+    "b3verse",
+    "frictionless",
+    "data cubes"
+  ],
+  "upload_type": "software",
+  "license": "MIT",
+  "language": "eng",
+  "contributors": [
+    {
+      "name": "Langeraert, Ward",
+      "affiliation": "Research Institute for Nature and Forest (INBO), Herman Teirlinckgebouw, Havenlaan 88 PO Box 73, B-1000 Brussels, Belgium",
+      "orcid": "0000-0002-5900-8109",
+      "type": "contactperson"
+    },
+    {
+      "name": "Research Institute for Nature and Forest (INBO)",
+      "type": "rightsholder"
+    }
+  ],
+  "creators": [
+    {
+      "name": "Langeraert, Ward",
+      "affiliation": "Research Institute for Nature and Forest (INBO), Herman Teirlinckgebouw, Havenlaan 88 PO Box 73, B-1000 Brussels, Belgium",
+      "orcid": "0000-0002-5900-8109"
+    },
+    {
+      "name": "Van Daele, Toon",
+      "affiliation": "Research Institute for Nature and Forest (INBO), Herman Teirlinckgebouw, Havenlaan 88 PO Box 73, B-1000 Brussels, Belgium",
+      "orcid": "0000-0002-1362-853X"
+    }
+  ],
+  "communities": [
+    {
+      "identifier": "b3"
+    },
+    {
+      "identifier": "inbo"
+    }
+  ]
+}
