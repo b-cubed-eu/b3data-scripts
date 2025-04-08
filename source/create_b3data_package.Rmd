@@ -29,3 +29,57 @@ source(here::here("source", "R", "download_occ_cube.R"))
 # Goal
 
 Create [frictionless](https://docs.ropensci.org/frictionless/) data package with example datasets (occurrence cubes) for the [b3verse](https://docs.b-cubed.eu/guides/b3verse/).
+
+# Methods
+
+
+# Datasets
+## Small scale - Birds in Belgium
+
+```{r}
+sql_query <- "SELECT
+  \"year\",
+  GBIF_MGRSCode(10000, decimalLatitude, decimalLongitude,
+  COALESCE(coordinateUncertaintyInMeters, 1000)) AS mgrsCode,
+  speciesKey,
+  species,
+  family,
+  COUNT(*) AS n,
+  MIN(COALESCE(coordinateUncertaintyInMeters, 1000)) AS minCoordinateUncertaintyInMeters,
+  IF(ISNULL(family), NULL, SUM(COUNT(*)) OVER (PARTITION BY family)) AS familyCount
+  FROM
+  occurrence
+  WHERE
+  occurrenceStatus = 'PRESENT'
+  AND NOT ARRAY_CONTAINS(issue, 'ZERO_COORDINATE')
+  AND NOT ARRAY_CONTAINS(issue, 'COORDINATE_OUT_OF_RANGE')
+  AND NOT ARRAY_CONTAINS(issue, 'COORDINATE_INVALID')
+  AND NOT ARRAY_CONTAINS(issue, 'COUNTRY_COORDINATE_MISMATCH')
+  AND countryCode = 'BE'
+  AND \"year\" >= 2000
+  AND \"year\" <= 2024
+  AND speciesKey IS NOT NULL
+  AND decimalLatitude IS NOT NULL
+  AND decimalLongitude IS NOT NULL
+  AND class = 'Aves'
+  GROUP BY
+  \"year\",
+  mgrsCode,
+  speciesKey,
+  family,
+  species
+  ORDER BY
+  \"year\" ASC,
+  mgrsCode ASC,
+  speciesKey ASC"
+```
+
+> use download_occ_cube function here
+
+```
+my_package <- create_package() %>%
+  add_resource(resource_name = "bird_cube_belgium", data = occ_cube,
+               title = "Occurrence cube for birds in Belgium (MGRS 10 km)",
+               description = "Occurrence cube for birds in Belgium (MGRS 10 km)")
+```
+
