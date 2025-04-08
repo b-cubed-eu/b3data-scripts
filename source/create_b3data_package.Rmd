@@ -41,6 +41,7 @@ Create [frictionless](https://docs.ropensci.org/frictionless/) data package with
 ## Small scale - Birds of Belgium
 
 ```{r}
+# nolint start: line_length_linter.
 sql_query <- "SELECT
   \"year\",
   GBIF_MGRSCode(10000, decimalLatitude, decimalLongitude,
@@ -76,6 +77,7 @@ sql_query <- "SELECT
   \"year\" ASC,
   mgrsCode ASC,
   speciesKey ASC"
+# nolint end
 ```
 
 > use download_occ_cube function here
