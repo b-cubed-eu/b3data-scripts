@@ -63,7 +63,7 @@ It is created using the [frictionless](https://docs.ropensci.org/frictionless/) 
 library(frictionless)
 ```
 
-**Step 2.** Read the data package from Zenodo and look at the contents
+**Step 2.** Read the descriptor file of the data package from Zenodo and look at the contents
 
 > This is an example based on an other data package. b3data will be published soon.
 
@@ -78,10 +78,16 @@ The following datasets are included:
 
 **Step 3.** Import dataset of interest from the data package
 
+Tabular data can be imported straightforward using the `read_resource()` function.
+
 ```{r}
 gps <- read_resource(b3data_package, "gps")
 gps
 ```
+
+Other datatypes need to be read from URL using specific packages (e.g. **sf** for spatial data or **terra** for raster data).
+
+> example coming soon
 
 ```{r, echo=FALSE}
 # nolint end
