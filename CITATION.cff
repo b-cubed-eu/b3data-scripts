@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: If you use this software, please cite it using these metadata.
-title: "Scripts used to create the frictionless b3data data package"
+title: "Scripts used to create the b3data frictionless data package"
 authors:
 - given-names: Ward
   family-names: Langeraert
