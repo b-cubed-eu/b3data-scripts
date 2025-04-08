@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: If you use this software, please cite it using these metadata.
-title: "Scripts used to create the frictionless b3data datapackage"
+title: "Scripts used to create the frictionless b3data data package"
 authors:
 - given-names: Ward
   family-names: Langeraert
@@ -13,7 +13,7 @@ authors:
     Havenlaan 88 PO Box 73, B-1000 Brussels, Belgium
   orcid: 0000-0002-1362-853X
 keywords:
-- datapackage
+- data package
 - b3verse
 - frictionless
 - data cubes
@@ -28,7 +28,7 @@ license: MIT
 repository-code: https://github.com/b-cubed-eu/b3data-scripts/
 type: software
 abstract: "This repository contains scripts to create the b3data [frictionless](https://docs.ropensci.org/frictionless/)
-  datapackage. This datapackage contains the data resources for the [b3verse](https://docs.b-cubed.eu/guides/b3verse/).
-  The datapackage will be published on [Zenodo](https://zenodo.org/) from where the
+  data package. This data package contains the data resources for the [b3verse](https://docs.b-cubed.eu/guides/b3verse/).
+  The data package will be published on [Zenodo](https://zenodo.org/) from where the
   datasets can be imported in R using the [frictionless](https://docs.ropensci.org/frictionless/)
   R package."
