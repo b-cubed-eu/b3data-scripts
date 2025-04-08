@@ -54,6 +54,10 @@ It is created using the [frictionless](https://docs.ropensci.org/frictionless/) 
 
 **Step 1.** Load the **frictionless** R package
 
+```{r, echo=FALSE}
+# nolint start
+```
+
 ```{r}
 #install.packages("frictionless")
 library(frictionless)
@@ -77,6 +81,10 @@ The following datasets are included:
 ```{r}
 gps <- read_resource(b3data_package, "gps")
 gps
+```
+
+```{r, echo=FALSE}
+# nolint end
 ```
 
 ### Repo structure
