@@ -23,9 +23,7 @@ European Union's Horizon Europe Research and Innovation Programme (ID No 1010595
 <!-- community: inbo -->
 
 <!-- description: start -->
-Replace this with a short description of the project.
-It becomes the abstract of the project in the citation information.
-And the project description at https://zenodo.org
+This repository contains scripts to create the b3data [frictionless](https://docs.ropensci.org/frictionless/) datapackage. This datapackage contains the data resources for the [b3verse](https://docs.b-cubed.eu/guides/b3verse/). The datapackage will be published on [Zenodo](https://zenodo.org/) from where the datasets can be imported in R using the [frictionless](https://docs.ropensci.org/frictionless/) R package.
 <!-- description: end -->
 
 This code is developed in context of **T5.5** of the [B-Cubed project](https://b-cubed.eu/).
