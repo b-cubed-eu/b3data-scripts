@@ -47,7 +47,7 @@ This code is developed in context of **T5.5** of the [B-Cubed project](https://b
 │   └── CONTRIBUTING.md            │
 ├── b3data-scripts.Rproj           ├ R project
 ├── README.md                      ├ project description
-├── LICENSE.md                     ├ licence
+├── LICENSE.md                     ├ license
 ├── CITATION.cff                   ├ citation info
 ├── .zenodo.json                   ├ zenodo metadata
 └── .gitignore                     ├ files to ignore
