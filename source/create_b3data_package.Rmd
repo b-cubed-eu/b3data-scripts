@@ -32,9 +32,13 @@ Create [frictionless](https://docs.ropensci.org/frictionless/) data package with
 
 # Methods
 
+- here tabular data, in other file adding spatial objects
+- where the package is stored
+- naming conventions of datasets (bird_cube_belgium, plant_cube_south_africa?)
+- which metadata added (title, description, ...)? per dataset and for complete package
 
 # Datasets
-## Small scale - Birds in Belgium
+## Small scale - Birds of Belgium
 
 ```{r}
 sql_query <- "SELECT
