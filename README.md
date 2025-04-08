@@ -31,7 +31,8 @@ This code is developed in context of **T5.5** of the [B-Cubed project](https://b
 ### Repo structure
 
 ```
-├── source                         ├ R scripts
+├── source                         ├ R markdown files
+│   └── R                          ├ R scripts
 ├── data
 │   ├── raw                        ├ create this folder and store raw data
 │   ├── processed                  ├ store processed data
