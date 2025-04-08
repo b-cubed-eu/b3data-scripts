@@ -27,8 +27,4 @@ doi: ~
 license: MIT
 repository-code: https://github.com/b-cubed-eu/b3data-scripts/
 type: software
-abstract: "This repository contains scripts to create the b3data [frictionless](https://docs.ropensci.org/frictionless/)
-  data package. This data package contains the data resources for the [b3verse](https://docs.b-cubed.eu/guides/b3verse/).
-  The data package will be published on [Zenodo](https://zenodo.org/) from where the
-  datasets can be imported in R using the [frictionless](https://docs.ropensci.org/frictionless/)
-  R package."
+abstract: "This repository contains scripts to create the b3data [frictionless](https://docs.ropensci.org/frictionless/) data package. This data package includes data resources used across the [b3verse](https://docs.b-cubed.eu/guides/b3verse/) and will be published on [Zenodo](https://zenodo.org/)."
