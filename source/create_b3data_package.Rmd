@@ -36,10 +36,32 @@ Create [frictionless](https://docs.ropensci.org/frictionless/) data package with
 
 # Methods
 
-- here tabular data, in other file adding spatial objects
-- where the package is stored
-- naming conventions of datasets (bird_cube_belgium, plant_cube_south_africa?)
-- which metadata added (title, description, ...)? per dataset and for complete package
+In this report, we focus on creating the data package for tabular data.
+In another R Markdown report, we add spatial datasets to the data package created here.
+
+The data package is named **b3data** and is stored in the folder `b3data-scripts/data/b3data_package`.
+The files package will be published on [Zenodo](https://zenodo.org/) from which they can be read using the **frictionless** R package.
+
+Data cubes are downloaded from GBIF using the **rgbif** package.
+The names of the datasets (`resource_name`) are created as follows: "taxon"_cube_"region"_"grid+resolution" (e.g. bird_cube_belgium_mgrs10 for an occurrence cube of birds in Belgium using the MGRS grid on 10 km resoluation)
+
+For each resource, the following [metadata](https://docs.ropensci.org/frictionless/articles/data-resource.html#properties-implementation) are added:
+
+-  title: e.g. "Occurrence cube for birds of Belgium (MGRS 10 km)"
+-  description: ...
+-  sources: DOI from GBIF
+-  licenses: https://creativecommons.org/licenses/by/4.0/
+
+For the data package, the following [metadata](https://specs.frictionlessdata.io/data-package/#metadata) are added:
+
+-  name: b3data
+-  id: reserve DOI on Zenodo
+-  licenses: https://creativecommons.org/licenses/by/4.0/
+-  title: "b3data: data resources for the b3verse"
+-  description: ...
+-  keywords: ...
+-  version: ...
+-  contributors: ...
 
 # Datasets
 ## Small scale - Birds of Belgium
