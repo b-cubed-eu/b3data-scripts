@@ -21,6 +21,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)     # Data wrangling and visualisation
 library(frictionless)  # Create frictionless data package
 library(rgbif)         # Create occurrence cubes from GBIF data
+library(sf)            # Spatial objects
 
 # Source functions
 source(here::here("source", "R", "download_occ_cube.R"))
@@ -36,8 +37,8 @@ Create [frictionless](https://docs.ropensci.org/frictionless/) data package with
 
 # Methods
 
-This report focuses on creating the **b3data** Frictionless data package for **tabular datasets**.  
-A separate report adds **spatial resources** (e.g. GeoJSON, raster) to the same data package.
+This report focuses on creating the **b3data** frictionless data package for tabular datasets.  
+A separate report adds spatial resources (e.g. GeoJSON, raster) to the same data package.
 
 ## Data Package Overview
 
@@ -130,12 +131,28 @@ bird_cube_query <- "SELECT
 # nolint end
 
 # Download and load cube
-bird_cube_belgium_mgrs10 <- download_occ_cube(
+bird_cube_belgium_mgrs10_full <- download_occ_cube(
   sql_query = bird_cube_query,
   file = "bird_cube_belgium_mgrs10.csv",
   path = data_path,
   overwrite = FALSE
 )
+```
+
+We only select the grid cells that belong to the MGRS 10 km reference grid for the mainland of Belgium (see b3data `mgrs10_refgrid_belgium.geojson`).
+
+```{r}
+# Read reference grid
+utm10_bel <- st_read(file.path(data_path, "utm10_bel.shp"))
+
+# Visualise
+ggplot() + geom_sf(data = utm10_bel)
+```
+
+```{r}
+# Only select grid cells from reference grid
+bird_cube_belgium_mgrs10 <- bird_cube_belgium_mgrs10_full %>%
+  filter(substr(mgrscode, 4, nchar(mgrscode)) %in% utm10_bel$TAG)
 ```
 
 We create the package and add the dataset.
@@ -150,7 +167,10 @@ b3data_package <- create_package() %>%
       "Occurrence cube for birds in Belgium between 2000 en 2024.",
       "The taxonomical resolution is 'species' and",
       "the temporal resolution is 'year'",
-      "Spatial aggregation is done using the MGRS grid at 10 km scale."),
+      "Spatial aggregation is done using the MGRS grid at 10 km scale.",
+      "Only grid cells that fall within the 10 km MGRS reference grid for",
+      "mainland Belgium (see b3data: `mgrs10_refgrid_belgium.geojson`) are",
+      "included."),
     sources = c(
       title = "GBIF Occurrence Download",
       path = "https://doi.org/10.15468/dl.y3wpwk"
