@@ -33,6 +33,22 @@ on [Zenodo](https://zenodo.org/). <!-- description: end -->
 This code is developed in context of **T5.5** of the [B-Cubed
 project](https://b-cubed.eu/).
 
+## Order of execution
+
+Follow the steps below to run the scripts in a logical order.
+
+**1.** `create_b3data_package.Rmd`
+
+- creates the data package
+- adds tabular resources
+- writes data package
+
+**2.** `add_spatial_resources.Rmd`
+
+- loads data package
+- adds spatial resources
+- writes data package
+
 ## 📦 The `b3data` data package
 
 - **Name**: `b3data`
