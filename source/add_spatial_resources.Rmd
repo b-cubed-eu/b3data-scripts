@@ -64,7 +64,13 @@ Each dataset includes the following metadata (see: [Frictionless resource spec](
 # Datasets
 ## MGRS 10 Km reference grid Belgium
 
+```{r}
+# Read reference grid
+utm10_bel <- st_read(file.path(data_path, "utm10_bel.shp"))
 
+# Visualise
+ggplot() + geom_sf(data = utm10_bel)
+```
 
 
 ## EEA 100 km reference grid Europe
