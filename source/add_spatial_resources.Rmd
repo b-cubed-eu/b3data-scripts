@@ -64,12 +64,24 @@ Each dataset includes the following metadata (see: [Frictionless resource spec](
 # Datasets
 ## MGRS 10 Km reference grid Belgium
 
+Load the data.
+
 ```{r}
 # Read reference grid
 utm10_bel <- st_read(file.path(data_path, "utm10_bel.shp"))
 
 # Visualise
 ggplot() + geom_sf(data = utm10_bel)
+```
+
+Clean data and transform cell codes to MGRS.
+
+```{r}
+mgrs10_refgrid_belgium <- utm10_bel %>%
+  select(utm_tag = TAG, geometry) %>%
+  mutate(mgrscode = ifelse(grepl("^[A-G]", utm_tag), paste0("31U", utm_tag),
+                           paste0("32U", utm_tag))) %>%
+  select(mgrscode, geometry)
 ```
 
 
