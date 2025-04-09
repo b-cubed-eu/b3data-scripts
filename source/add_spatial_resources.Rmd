@@ -26,8 +26,8 @@ library(sf)            # Spatial objects
 data_path <- here::here("data", "raw")
 dir.create(data_path, showWarnings = FALSE, recursive = TRUE)
 
-out_path <- here::here("data", "processed")
-dir.create(out_path, showWarnings = FALSE, recursive = TRUE)
+package_path <- here::here("data", "b3data_package")
+dir.create(package_path, showWarnings = FALSE, recursive = TRUE)
 ```
 
 # Goal
@@ -84,9 +84,45 @@ mgrs10_refgrid_belgium <- utm10_bel %>%
   select(mgrscode, geometry)
 ```
 
+Write to data package and add metadata.
+
+```{r}
+st_write(mgrs10_refgrid_belgium,
+         file.path(package_path, "mgrs10_refgrid_belgium.geojson"),
+         append = FALSE)
+```
+
+```{r}
+if (FALSE) {
+  # Read package
+  b3data_package <- read_package(file.path(package_path, "datapackage.json"))
+  
+  # Add spatial resources manually
+  b3data_package$resources <- append(b3data_package$resources, list(
+    list(
+      name = "mgrs10_refgrid_belgium",
+      path = "mgrs10_refgrid_belgium.geojson",
+      profile = "spatial-data-resource",
+      format = "geojson",
+      title = "MGRS 10 Km reference grid Belgium",
+      description = "MGRS 10 Km reference grid for the mainland of Belgium.",
+      licenses = c(
+        name = "CC0 1.0",
+        path = "https://creativecommons.org/publicdomain/zero/1.0/",
+        title = "Creative Commons Zero v1.0 Universal"
+        )
+      )
+    ))
+  
+  # Write package to directory
+  # Write package to directory
+  write_package(
+    package = b3data_package,
+    directory = package_path,
+    compress = TRUE)
+}
+```
 
 ## EEA 100 km reference grid Europe
 
 > Coming soon
-
-# Write package
