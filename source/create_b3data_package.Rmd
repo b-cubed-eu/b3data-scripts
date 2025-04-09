@@ -179,7 +179,7 @@ b3data_package <- append(b3data_package,
                          c(name = "b3data"),
                          after = 0)
 b3data_package <- append(b3data_package,
-                         c(id = "https://doi.org/10.5281/zenodo.15181098"),
+                         c(id = "https://doi.org/10.5281/zenodo.15181097"),
                          after = 1)
 b3data_package <- append(b3data_package,
                          c(title = "b3data: Data resources for the b3verse"),
