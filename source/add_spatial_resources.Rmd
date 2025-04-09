@@ -36,4 +36,17 @@ Add spatial data resources to b3data frictionless data package.
 
 # Methods
 
-...
+- process data -> save as geojson
+
+- add to package
+
+- metadata
+
+# Datasets
+## UTM 10 Km grid Belgium
+
+## EEA 100 km grid Europe
+
+> Coming soon
+
+# Write package
