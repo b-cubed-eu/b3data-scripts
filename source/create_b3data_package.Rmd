@@ -171,11 +171,11 @@ b3data_package <- create_package() %>%
       "Only grid cells that fall within the 10 km MGRS reference grid for",
       "mainland Belgium (see b3data: `mgrs10_refgrid_belgium.geojson`) are",
       "included."),
-    sources = c(
+    sources = list(
       title = "GBIF Occurrence Download",
       path = "https://doi.org/10.15468/dl.y3wpwk"
     ),
-    licenses = c(
+    licenses = list(
       name = "CC BY-NC 4.0",
       path = "https://creativecommons.org/licenses/by-nc/4.0/",
       title = "Creative Commons Attribution-NonCommercial 4.0 International"
@@ -210,45 +210,47 @@ b3data_package <- append(
     "resources like reference grids or raster data."
   )),
   after = 4)
-b3data_package <- append(b3data_package,
-                         c(keywords = c("data cubes", "b3verse", "frictionless",
-                                        "biodiversity")),
-                         after = 5)
 b3data_package <- append(
   b3data_package,
-  c(licenses = c(
+  c(keywords = list(list(
+    "data cubes", "b3verse", "frictionless", "biodiversity"
+    ))),
+  after = 5)
+b3data_package <- append(
+  b3data_package,
+  c(licenses = list(list(
     name = "CC BY-NC 4.0",
     path = "https://creativecommons.org/licenses/by-nc/4.0/",
     title = "Creative Commons Attribution-NonCommercial 4.0 International"
-    )),
+    ))),
   after = 6)
 b3data_package <- append(b3data_package,
                          c(version = "0.1.0"),
                          after = 7)
 b3data_package <- append(
   b3data_package,
-  c(sources = c(
+  c(sources = list(list(
     title = "b3data-scripts",
     path = "https://github.com/b-cubed-eu/b3data-scripts"
-    )),
+    ))),
   after = 8)
 b3data_package <- append(
   b3data_package,
-  c(contributors = c(
-    c(
+  c(contributors = list(list(
+    list(
       title = "Ward Langeraert",
       path = "https://orcid.org/0000-0002-5900-8109",
       email = "ward.langeraert@inbo.be",
       role = "author",
       organization = "Research Institute for Nature and Forest (INBO)"
       ),
-    c(
+    list(
       title = "Toon Van Daele",
       path = "https://orcid.org/0000-0002-1362-853X",
       role = "contributor",
       organization = "Research Institute for Nature and Forest (INBO)"
       )
-    )),
+    ))),
   after = 9)
 
 # Warning: append() drops the custom datapackage class.

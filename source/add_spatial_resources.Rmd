@@ -107,7 +107,7 @@ mgrs10_resource <- list(
   format = "geojson",
   title = "MGRS 10 Km reference grid Belgium",
   description = "MGRS 10 Km reference grid for the mainland of Belgium.",
-  licenses = c(
+  licenses = list(
     name = "CC0 1.0",
     path = "https://creativecommons.org/publicdomain/zero/1.0/",
     title = "Creative Commons Zero v1.0 Universal"
