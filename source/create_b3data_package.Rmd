@@ -28,9 +28,6 @@ source(here::here("source", "R", "download_occ_cube.R"))
 # Data path and create directory if necessary
 data_path <- here::here("data", "raw")
 dir.create(data_path, showWarnings = FALSE, recursive = TRUE)
-
-out_path <- here::here("data", "processed")
-dir.create(out_path, showWarnings = FALSE, recursive = TRUE)
 ```
 
 # Goal
