@@ -35,11 +35,13 @@ project](https://b-cubed.eu/).
 
 ## 📦 The `b3data` data package
 
-Once published, the data package will be available here:
+- **Name**: `b3data`
+- **Published at**: [Zenodo](https://zenodo.org/) (DOI to be reserved)
+- **Used in**: [b3verse](https://docs.b-cubed.eu/guides/b3verse/)
+- **Importable in R via**:
+  [frictionless](https://docs.ropensci.org/frictionless/) R package
 
-> 🕐 *URL will be provided when available*
-
-Datasets can be imported in R like this:
+Resources can be imported in R like this:
 
 ### Step 1 — Load the frictionless R package
 
@@ -64,7 +66,7 @@ b3data_package
 #> Use `unclass()` to print the Data Package as a list.
 ```
 
-### Step 3 — Import a dataset
+### Step 3 — Import a resource (dataset)
 
 Tabular datasets can be loaded using `read_resource()`.
 
