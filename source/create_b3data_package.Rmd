@@ -82,6 +82,7 @@ Metadata for the entire data package (see: [Frictionless Data Package spec](http
 - **description**: overview of purpose, content, and structure of the data package
 - **keywords**: e.g. `"biodiversity", "data cube", "b3verse", "GBIF", "frictionless"`
 - **licenses**: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+- **version**: semantic versioning string, e.g. 0.1.0
 - **sources**: GitHub repository [b3data-scripts](https://github.com/b-cubed-eu/b3data-scripts)
 - **contributors**: name, ORCID, and roles
 
@@ -204,13 +205,16 @@ b3data_package <- append(
     title = "Creative Commons Attribution-NonCommercial 4.0 International"
     )),
   after = 6)
+b3data_package <- append(b3data_package,
+                         c(version = "0.1.0"),
+                         after = 7)
 b3data_package <- append(
   b3data_package,
   c(sources = c(
     title = "b3data-scripts",
     path = "https://github.com/b-cubed-eu/b3data-scripts"
     )),
-  after = 7)
+  after = 8)
 b3data_package <- append(
   b3data_package,
   c(contributors = c(
@@ -228,7 +232,7 @@ b3data_package <- append(
       organization = "Research Institute for Nature and Forest (INBO)"
       )
     )),
-  after = 8)
+  after = 9)
 
 # Warning: append() drops the custom datapackage class.
 # It can be added again by running b3data_package through create_package()

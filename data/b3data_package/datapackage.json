@@ -55,6 +55,7 @@
   "description": "This data package contains data resources to be used across the b3verse (https://docs.b-cubed.eu/guides/b3verse/). This includes example datasets (occurrence cubes) as well as spatial resources like reference grids or raster data.",
   "keywords1": "data cubes",
   "licenses.name": " CC BY-NC 4.0",
+  "version": "0.1.0",
   "sources.title": "b3data-scripts",
   "contributors.title": "Ward Langeraert",
   "contributors.path": "https://orcid.org/0000-0002-5900-8109",
