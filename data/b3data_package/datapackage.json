@@ -1,6 +1,6 @@
 {
   "name": "b3data",
-  "id": "...",
+  "id": "https://doi.org/10.5281/zenodo.15181098",
   "resources": [
     {
       "name": "bird_cube_belgium_mgrs10",
@@ -17,7 +17,7 @@
         "fields": [
           {
             "name": "year",
-            "type": "integer"
+            "type": "number"
           },
           {
             "name": "mgrscode",
@@ -25,7 +25,7 @@
           },
           {
             "name": "specieskey",
-            "type": "integer"
+            "type": "number"
           },
           {
             "name": "species",
@@ -37,7 +37,7 @@
           },
           {
             "name": "n",
-            "type": "integer"
+            "type": "number"
           },
           {
             "name": "mincoordinateuncertaintyinmeters",
@@ -45,7 +45,7 @@
           },
           {
             "name": "familycount",
-            "type": "integer"
+            "type": "number"
           }
         ]
       }
