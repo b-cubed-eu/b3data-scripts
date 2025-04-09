@@ -22,12 +22,15 @@ library(tidyverse)     # Data wrangling and visualisation
 library(frictionless)  # Create frictionless data package
 library(sf)            # Spatial objects
 
+# Source functions
+source(here::here("source", "R", "add_manual_resource.R"))
+
 # Data path and create directory if necessary
 data_path <- here::here("data", "raw")
 dir.create(data_path, showWarnings = FALSE, recursive = TRUE)
 
-out_path <- here::here("data", "processed")
-dir.create(out_path, showWarnings = FALSE, recursive = TRUE)
+package_path <- here::here("data", "b3data_package")
+dir.create(package_path, showWarnings = FALSE, recursive = TRUE)
 ```
 
 # Goal
@@ -64,6 +67,8 @@ Each dataset includes the following metadata (see: [Frictionless resource spec](
 # Datasets
 ## MGRS 10 Km reference grid Belgium
 
+Load the data.
+
 ```{r}
 # Read reference grid
 utm10_bel <- st_read(file.path(data_path, "utm10_bel.shp"))
@@ -72,9 +77,53 @@ utm10_bel <- st_read(file.path(data_path, "utm10_bel.shp"))
 ggplot() + geom_sf(data = utm10_bel)
 ```
 
+Clean data and transform cell codes to MGRS.
+
+```{r}
+mgrs10_refgrid_belgium <- utm10_bel %>%
+  select(utm_tag = TAG, geometry) %>%
+  mutate(mgrscode = ifelse(grepl("^[A-G]", utm_tag), paste0("31U", utm_tag),
+                           paste0("32U", utm_tag))) %>%
+  select(mgrscode, geometry)
+```
+
+Write to data package and add metadata.
+
+```{r}
+st_write(mgrs10_refgrid_belgium,
+         file.path(package_path, "mgrs10_refgrid_belgium.geojson"),
+         delete_dsn = TRUE)
+```
+
+```{r}
+# Read package
+b3data_package <- read_package(file.path(package_path, "datapackage.json"))
+
+# Add resource to data package
+mgrs10_resource <- list(
+  name = "mgrs10_refgrid_belgium",
+  path = "mgrs10_refgrid_belgium.geojson",
+  profile = "spatial-data-resource",
+  format = "geojson",
+  title = "MGRS 10 Km reference grid Belgium",
+  description = "MGRS 10 Km reference grid for the mainland of Belgium.",
+  licenses = list(
+    name = "CC0 1.0",
+    path = "https://creativecommons.org/publicdomain/zero/1.0/",
+    title = "Creative Commons Zero v1.0 Universal"
+    )
+  )
+
+b3data_package <- add_manual_resource(
+  b3data_package, mgrs10_resource, replace = TRUE)
+
+# Write package to directory
+write_package(
+  package = b3data_package,
+  directory = package_path,
+  compress = TRUE)
+```
 
 ## EEA 100 km reference grid Europe
 
 > Coming soon
-
-# Write package

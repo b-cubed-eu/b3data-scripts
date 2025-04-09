@@ -11,8 +11,15 @@
       "encoding": "utf-8",
       "title": "Occurrence cube for birds in Belgium (MGRS 10 km)",
       "description": "Occurrence cube for birds in Belgium between 2000 en 2024. The taxonomical resolution is 'species' and the temporal resolution is 'year' Spatial aggregation is done using the MGRS grid at 10 km scale. Only grid cells that fall within the 10 km MGRS reference grid for mainland Belgium (see b3data: `mgrs10_refgrid_belgium.geojson`) are included.",
-      "sources": ["GBIF Occurrence Download", "https://doi.org/10.15468/dl.y3wpwk"],
-      "licenses": [" CC BY-NC 4.0", "https://creativecommons.org/licenses/by-nc/4.0/", "Creative Commons Attribution-NonCommercial 4.0 International"],
+      "sources": {
+        "title": "GBIF Occurrence Download",
+        "path": "https://doi.org/10.15468/dl.y3wpwk"
+      },
+      "licenses": {
+        "name": "CC BY-NC 4.0",
+        "path": "https://creativecommons.org/licenses/by-nc/4.0/",
+        "title": "Creative Commons Attribution-NonCommercial 4.0 International"
+      },
       "schema": {
         "fields": [
           {
@@ -49,27 +56,47 @@
           }
         ]
       }
+    },
+    {
+      "name": "mgrs10_refgrid_belgium",
+      "path": "mgrs10_refgrid_belgium.geojson",
+      "profile": "spatial-data-resource",
+      "format": "geojson",
+      "title": "MGRS 10 Km reference grid Belgium",
+      "description": "MGRS 10 Km reference grid for the mainland of Belgium.",
+      "licenses": {
+        "name": "CC0 1.0",
+        "path": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "title": "Creative Commons Zero v1.0 Universal"
+      }
     }
   ],
   "title": "b3data: Data resources for the b3verse",
   "description": "This data package contains data resources to be used across the b3verse (https://docs.b-cubed.eu/guides/b3verse/). This includes example datasets (occurrence cubes) as well as spatial resources like reference grids or raster data.",
-  "keywords1": "data cubes",
-  "licenses.name": " CC BY-NC 4.0",
+  "keywords": ["data cubes", "b3verse", "frictionless", "biodiversity"],
+  "licenses": {
+    "name": "CC BY-NC 4.0",
+    "path": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "title": "Creative Commons Attribution-NonCommercial 4.0 International"
+  },
   "version": "0.1.0",
-  "sources.title": "b3data-scripts",
-  "contributors.title": "Ward Langeraert",
-  "contributors.path": "https://orcid.org/0000-0002-5900-8109",
-  "contributors.email": "ward.langeraert@inbo.be",
-  "contributors.role": "author",
-  "contributors.organization": "Research Institute for Nature and Forest (INBO)",
-  "contributors.title.1": "Toon Van Daele",
-  "contributors.path.1": "https://orcid.org/0000-0002-1362-853X",
-  "contributors.role.1": "contributor",
-  "contributors.organization.1": "Research Institute for Nature and Forest (INBO)",
-  "sources.path": "https://github.com/b-cubed-eu/b3data-scripts",
-  "licenses.path": "https://creativecommons.org/licenses/by-nc/4.0/",
-  "licenses.title": "Creative Commons Attribution-NonCommercial 4.0 International",
-  "keywords2": "b3verse",
-  "keywords3": "frictionless",
-  "keywords4": "biodiversity"
+  "sources": {
+    "title": "b3data-scripts",
+    "path": "https://github.com/b-cubed-eu/b3data-scripts"
+  },
+  "contributors": [
+    {
+      "title": "Ward Langeraert",
+      "path": "https://orcid.org/0000-0002-5900-8109",
+      "email": "ward.langeraert@inbo.be",
+      "role": "author",
+      "organization": "Research Institute for Nature and Forest (INBO)"
+    },
+    {
+      "title": "Toon Van Daele",
+      "path": "https://orcid.org/0000-0002-1362-853X",
+      "role": "contributor",
+      "organization": "Research Institute for Nature and Forest (INBO)"
+    }
+  ]
 }

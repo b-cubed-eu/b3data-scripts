@@ -17,6 +17,7 @@
 *.xls*
 *_files
 *.gz
+*.geojson
 docs
 libs
 output
