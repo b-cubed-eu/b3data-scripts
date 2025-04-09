@@ -36,16 +36,38 @@ Add spatial data resources to b3data frictionless data package.
 
 # Methods
 
-- process data -> save as geojson
+This report focuses on adding spatial resources (e.g. GeoJSON, raster) to the **b3data** frictionless data package.
 
-- add to package
+## Source Data
 
-- metadata
+Spatial data need to be saved locally in the data package directory and then added manually to the descriptor file using `append()`.
+We provide the reference grids for the occurrence cubes in the data package following this naming convention:
+
+```
+resource_name = "<grid><resolution>refgrid<region>"
+```
+
+Example:  
+`mgrs10_refgrid_belgium` → MGRS 10 km reference grid Belgium
+
+## Resource-level Metadata
+
+Each dataset includes the following metadata (see: [Frictionless resource spec](https://docs.ropensci.org/frictionless/articles/data-resource.html#properties-implementation)):
+
+- **profile**: `spatial-data-resource`
+- **format**: e.g. `geojson`
+- **title**: e.g. `"MGRS 10 km reference grid for Belgium"`
+- **description**: concise explanation of content
+- **sources**: source if applicable
+- **licenses**: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
 
 # Datasets
-## UTM 10 Km grid Belgium
+## MGRS 10 Km reference grid Belgium
 
-## EEA 100 km grid Europe
+
+
+
+## EEA 100 km reference grid Europe
 
 > Coming soon
 
