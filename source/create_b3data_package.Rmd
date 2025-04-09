@@ -24,6 +24,10 @@ library(rgbif)         # Create occurrence cubes from GBIF data
 
 # Source functions
 source(here::here("source", "R", "download_occ_cube.R"))
+
+# Data path and create directory if necessary
+data_path <- here::here("data", "raw")
+dir.create(data_path, showWarnings = FALSE, recursive = TRUE)
 ```
 
 # Goal
@@ -80,7 +84,12 @@ sql_query <- "SELECT
 # nolint end
 ```
 
-> use download_occ_cube function here
+abv_data_total <- download_occ_cube(
+  sql_query = sql_query,
+  file = "abv_data.csv",
+  path = data_path,
+  overwrite = FALSE
+)
 
 ```
 my_package <- create_package() %>%
