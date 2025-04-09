@@ -176,7 +176,7 @@ b3data_package <- create_package() %>%
       path = "https://doi.org/10.15468/dl.y3wpwk"
     ),
     licenses = c(
-      name = " CC BY-NC 4.0",
+      name = "CC BY-NC 4.0",
       path = "https://creativecommons.org/licenses/by-nc/4.0/",
       title = "Creative Commons Attribution-NonCommercial 4.0 International"
     )
@@ -217,7 +217,7 @@ b3data_package <- append(b3data_package,
 b3data_package <- append(
   b3data_package,
   c(licenses = c(
-    name = " CC BY-NC 4.0",
+    name = "CC BY-NC 4.0",
     path = "https://creativecommons.org/licenses/by-nc/4.0/",
     title = "Creative Commons Attribution-NonCommercial 4.0 International"
     )),
