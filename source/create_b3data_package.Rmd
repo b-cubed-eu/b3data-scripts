@@ -28,6 +28,9 @@ source(here::here("source", "R", "download_occ_cube.R"))
 # Data path and create directory if necessary
 data_path <- here::here("data", "raw")
 dir.create(data_path, showWarnings = FALSE, recursive = TRUE)
+
+out_path <- here::here("data", "processed")
+dir.create(out_path, showWarnings = FALSE, recursive = TRUE)
 ```
 
 # Goal
@@ -36,39 +39,62 @@ Create [frictionless](https://docs.ropensci.org/frictionless/) data package with
 
 # Methods
 
-In this report, we focus on creating the data package for tabular data.
-In another R Markdown report, we add spatial datasets to the data package created here.
+This report focuses on creating the **b3data** Frictionless data package for **tabular datasets**.  
+A separate report adds **spatial resources** (e.g. GeoJSON, raster) to the same data package.
 
-The data package is named **b3data** and is stored in the folder `b3data-scripts/data/b3data_package`.
-The files package will be published on [Zenodo](https://zenodo.org/) from which they can be read using the **frictionless** R package.
+## Data Package Overview
 
-Data cubes are downloaded from GBIF using the **rgbif** package.
-The names of the datasets (`resource_name`) are created as follows: "taxon"_cube_"region"_"grid+resolution" (e.g. bird_cube_belgium_mgrs10 for an occurrence cube of birds in Belgium using the MGRS grid on 10 km resoluation)
+- **Name**: `b3data`
+- **Location**: `b3data-scripts/data/b3data_package/`
+- **Published at**: [Zenodo](https://zenodo.org/) (DOI to be reserved)
+- **Used in**: [b3verse](https://docs.b-cubed.eu/guides/b3verse/)
+- **Importable in R via**: [`frictionless`](https://docs.ropensci.org/frictionless/) R package
 
-For each resource, the following [metadata](https://docs.ropensci.org/frictionless/articles/data-resource.html#properties-implementation) are added:
+## Source Data
 
--  title: e.g. "Occurrence cube for birds of Belgium (MGRS 10 km)"
--  description: ...
--  sources: DOI from GBIF
--  licenses: https://creativecommons.org/licenses/by/4.0/
+Tabular data is downloaded from **GBIF** using the [`rgbif`](https://docs.ropensci.org/rgbif/) package.
 
-For the data package, the following [metadata](https://specs.frictionlessdata.io/data-package/#metadata) are added:
+Each dataset (resource) corresponds to an **occurrence cube** and follows this naming convention:
 
--  name: b3data
--  id: reserve DOI on Zenodo
--  licenses: https://creativecommons.org/licenses/by/4.0/
--  title: "b3data: data resources for the b3verse"
--  description: ...
--  keywords: ...
--  version: ...
--  contributors: ...
+```
+resource_name = "<taxon>cube<region>_<grid><resolution>"
+```
+
+Example:  
+`bird_cube_belgium_mgrs10` → bird occurrences in Belgium using the MGRS grid (10 km resolution)
+
+## Resource-level Metadata
+
+Each dataset includes the following metadata (see: [Frictionless resource spec](https://docs.ropensci.org/frictionless/articles/data-resource.html#properties-implementation)):
+
+- **title**: e.g. `"Occurrence cube for birds in Belgium (MGRS 10 km)"`
+- **description**: concise explanation of content, region, time period, method
+- **sources**: GBIF DOI
+- **licenses**: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) (based on GBIF source license)
+
+## Package-level Metadata
+
+Metadata for the entire data package (see: [Frictionless Data Package spec](https://specs.frictionlessdata.io/data-package/#metadata)):
+
+- **name**: `b3data`
+- **id**: reserved Zenodo DOI
+- **title**: `b3data: Data resources for the b3verse`
+- **description**: overview of purpose, content, and structure of the data package
+- **keywords**: e.g. `"biodiversity", "data cube", "b3verse", "GBIF", "frictionless"`
+- **licenses**: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+- **sources**: GitHub repository [b3data-scripts](https://github.com/b-cubed-eu/b3data-scripts)
+- **contributors**: name, ORCID, and roles
 
 # Datasets
-## Small scale - Birds of Belgium
+## Birds in Belgium (MGRS 10 km)
+
+As example dataset on small scale, we include an occurrence cube of birds in Belgium between 2000 en 2024.
+The taxonomical resolution is "species" and the temporal resolution is "year".
+For aggregation, we choose the MGRS grid at 10 km scale.
 
 ```{r}
 # nolint start: line_length_linter.
-sql_query <- "SELECT
+bird_cube_query <- "SELECT
   \"year\",
   GBIF_MGRSCode(10000, decimalLatitude, decimalLongitude,
   COALESCE(coordinateUncertaintyInMeters, 1000)) AS mgrsCode,
@@ -104,33 +130,121 @@ sql_query <- "SELECT
   mgrsCode ASC,
   speciesKey ASC"
 # nolint end
-```
 
-abv_data_total <- download_occ_cube(
-  sql_query = sql_query,
-  file = "abv_data.csv",
+# Download and load cube
+bird_cube_belgium_mgrs10 <- download_occ_cube(
+  sql_query = bird_cube_query,
+  file = "bird_cube_belgium_mgrs10.csv",
   path = data_path,
   overwrite = FALSE
 )
+```
 
+We create the package and add the dataset.
+
+```{r}
+b3data_package <- create_package() %>%
+  add_resource(
+    resource_name = "bird_cube_belgium_mgrs10",
+    data = bird_cube_belgium_mgrs10,
+    title = "Occurrence cube for birds in Belgium (MGRS 10 km)",
+    description = paste(
+      "Occurrence cube for birds in Belgium between 2000 en 2024.",
+      "The taxonomical resolution is 'species' and",
+      "the temporal resolution is 'year'",
+      "Spatial aggregation is done using the MGRS grid at 10 km scale."),
+    sources = c(
+      title = "GBIF Occurrence Download",
+      path = "https://doi.org/10.15468/dl.y3wpwk"
+    ),
+    licenses = c(
+      name = " CC BY-NC 4.0",
+      path = "https://creativecommons.org/licenses/by-nc/4.0/",
+      title = "Creative Commons Attribution-NonCommercial 4.0 International"
+    )
+  )
 ```
-my_package <- create_package() %>%
-  add_resource(resource_name = "bird_cube_belgium", data = occ_cube,
-               title = "Occurrence cube for birds in Belgium (MGRS 10 km)",
-               description = "Occurrence cube for birds in Belgium (MGRS 10 km)")
-```
+
+## Mammals of Europe (EEA 100 km)
+
+> Coming soon
 
 # Write package
 
-```
-my_package <- append(my_package, c(name = "my_package"), after = 0)
-my_package <- append(my_package, c(title = "My package"), after = 1)
+We add the package metadata.
+
+```{r}
+b3data_package <- append(b3data_package,
+                         c(name = "b3data"),
+                         after = 0)
+b3data_package <- append(b3data_package,
+                         c(id = "..."),
+                         after = 1)
+b3data_package <- append(b3data_package,
+                         c(title = "b3data: Data resources for the b3verse"),
+                         after = 3)
+b3data_package <- append(
+  b3data_package,
+  c(description = paste(
+    "This data package contains data resources to be used across the b3verse",
+    "(https://docs.b-cubed.eu/guides/b3verse/).",
+    "This includes example datasets (occurrence cubes) as well as spatial",
+    "resources like reference grids or raster data."
+  )),
+  after = 4)
+b3data_package <- append(b3data_package,
+                         c(keywords = c("data cubes", "b3verse", "frictionless",
+                                        "biodiversity")),
+                         after = 5)
+b3data_package <- append(
+  b3data_package,
+  c(licenses = c(
+    name = " CC BY-NC 4.0",
+    path = "https://creativecommons.org/licenses/by-nc/4.0/",
+    title = "Creative Commons Attribution-NonCommercial 4.0 International"
+    )),
+  after = 6)
+b3data_package <- append(
+  b3data_package,
+  c(sources = c(
+    title = "b3data-scripts",
+    path = "https://github.com/b-cubed-eu/b3data-scripts"
+    )),
+  after = 7)
+b3data_package <- append(
+  b3data_package,
+  c(contributors = c(
+    c(
+      title = "Ward Langeraert",
+      path = "https://orcid.org/0000-0002-5900-8109",
+      email = "ward.langeraert@inbo.be",
+      role = "author",
+      organization = "Research Institute for Nature and Forest (INBO)"
+      ),
+    c(
+      title = "Toon Van Daele",
+      path = "https://orcid.org/0000-0002-1362-853X",
+      role = "contributor",
+      organization = "Research Institute for Nature and Forest (INBO)"
+      )
+    )),
+  after = 8)
 
 # Warning: append() drops the custom datapackage class.
-# It can be added again by running my_package through create_package()
-my_package <- create_package(my_package)
+# It can be added again by running b3data_package through create_package()
+b3data_package <- create_package(b3data_package)
 ```
 
-```
-write_package(my_package, "frictionless_test", compress = TRUE)
+We write the package to the directory.
+
+```{r}
+# Create directory
+package_path <- here::here("data", "b3data_package")
+dir.create(package_path, showWarnings = FALSE, recursive = TRUE)
+
+# Write package to directory
+write_package(
+  package = b3data_package,
+  directory = package_path,
+  compress = TRUE)
 ```
