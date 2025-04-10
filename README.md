@@ -3,6 +3,7 @@
 <!-- badges: start -->
 
 ![GitHub](https://img.shields.io/github/license/b-cubed-eu/b3data-scripts)
+[![Release](https://img.shields.io/github/release/b-cubed-eu/b3data-scripts.svg)](https://github.com/b-cubed-eu/b3data-scripts/releases)
 [![repo
 status](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 ![GitHub repo
@@ -52,7 +53,8 @@ Follow the steps below to run the scripts in a logical order.
 ## 📦 The `b3data` data package
 
 - **Name**: `b3data`
-- **Published at**: [Zenodo](https://zenodo.org/) (DOI to be reserved)
+- **Published at**:
+  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15181097.svg)](https://doi.org/10.5281/zenodo.15181097)
 - **Used in**: [b3verse](https://docs.b-cubed.eu/guides/b3verse/)
 - **Importable in R via**:
   [frictionless](https://docs.ropensci.org/frictionless/) R package
@@ -68,17 +70,15 @@ library(frictionless)
 
 ### Step 2 — Read the package descriptor from Zenodo
 
-> This example uses a placeholder data package; replace with the final
-> URL when ready.
+The content of the data package can be consulted using `read_package()`.
 
 ``` r
-b3data_package <- read_package("https://zenodo.org/records/10053702/files/datapackage.json")
+b3data_package <- read_package("https://zenodo.org/records/15181098/files/datapackage.json")
 b3data_package
-#> A Data Package with 3 resources:
-#> • reference-data
-#> • gps
-#> • acceleration
-#> For more information, see <https://doi.org/10.5281/zenodo.10053702>.
+#> A Data Package with 2 resources:
+#> • bird_cube_belgium_mgrs10
+#> • mgrs10_refgrid_belgium
+#> For more information, see <https://doi.org/10.5281/zenodo.15181098>.
 #> Use `unclass()` to print the Data Package as a list.
 ```
 
@@ -87,30 +87,41 @@ b3data_package
 Tabular datasets can be loaded using `read_resource()`.
 
 ``` r
-gps <- read_resource(b3data_package, "gps")
-head(gps)
-#> # A tibble: 6 × 21
-#>    `event-id` visible timestamp           `location-long` `location-lat`
-#>         <dbl> <lgl>   <dttm>                        <dbl>          <dbl>
-#> 1 14256075762 TRUE    2018-05-25 16:11:37            4.25           51.3
-#> 2 14256075763 TRUE    2018-05-25 16:16:41            4.25           51.3
-#> 3 14256075764 TRUE    2018-05-25 16:21:29            4.25           51.3
-#> 4 14256075765 TRUE    2018-05-25 16:26:28            4.25           51.3
-#> 5 14256075766 TRUE    2018-05-25 16:31:21            4.25           51.3
-#> 6 14256075767 TRUE    2018-05-25 16:36:09            4.25           51.3
-#> # ℹ 16 more variables: `bar:barometric-pressure` <dbl>,
-#> #   `external-temperature` <dbl>, `gps:dop` <dbl>, `gps:satellite-count` <dbl>,
-#> #   `gps-time-to-fix` <dbl>, `ground-speed` <dbl>, heading <dbl>,
-#> #   `height-above-msl` <dbl>, `location-error-numerical` <dbl>,
-#> #   `manually-marked-outlier` <lgl>, `vertical-error-numerical` <dbl>,
-#> #   `sensor-type` <chr>, `individual-taxon-canonical-name` <chr>,
-#> #   `tag-local-identifier` <chr>, `individual-local-identifier` <chr>, …
+bird_cube_belgium <- read_resource(b3data_package, "bird_cube_belgium_mgrs10")
+head(bird_cube_belgium)
+#> # A tibble: 6 × 8
+#>    year mgrscode specieskey species          family     n mincoordinateuncerta…¹
+#>   <dbl> <chr>         <dbl> <chr>            <chr>  <dbl>                  <dbl>
+#> 1  2000 31UDS65     2473958 Perdix perdix    Phasi…     1                   3536
+#> 2  2000 31UDS65     2474156 Coturnix coturn… Phasi…     1                   3536
+#> 3  2000 31UDS65     2474377 Fulica atra      Ralli…     5                   1000
+#> 4  2000 31UDS65     2475443 Merops apiaster  Merop…     6                   1000
+#> 5  2000 31UDS65     2480242 Vanellus vanell… Chara…     1                   3536
+#> 6  2000 31UDS65     2480637 Accipiter nisus  Accip…     1                   3536
+#> # ℹ abbreviated name: ¹​mincoordinateuncertaintyinmeters
+#> # ℹ 1 more variable: familycount <dbl>
 ```
 
 For non-tabular resources (e.g. spatial or raster data), use packages
-like `sf` or `terra`.
+like `sf` or `terra` directly.
 
-> Example coming soon.
+``` r
+mgrs10_belgium <- sf::st_read("https://zenodo.org/records/15181098/files/mgrs10_refgrid_belgium.geojson",
+                              quiet = TRUE)
+head(mgrs10_belgium)
+#> Simple feature collection with 6 features and 1 field
+#> Geometry type: POLYGON
+#> Dimension:     XY
+#> Bounding box:  xmin: 13919.31 ymin: 159175.7 xmax: 34107.28 ymax: 209553.2
+#> Geodetic CRS:  WGS 84
+#>   mgrscode                       geometry
+#> 1  31UDS65 POLYGON ((23939.64 190365.5...
+#> 2  31UDS66 POLYGON ((24123.5 200367.5,...
+#> 3  31UDS72 POLYGON ((33389.37 160175.9...
+#> 4  31UDS73 POLYGON ((33573.52 170177.6...
+#> 5  31UDS74 POLYGON ((33757.62 180179.5...
+#> 6  31UDS75 POLYGON ((33941.67 190181.5...
+```
 
 ## 📁 Repository structure
 

@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 ![GitHub](https://img.shields.io/github/license/b-cubed-eu/b3data-scripts)
+[![Release](https://img.shields.io/github/release/b-cubed-eu/b3data-scripts.svg)](https://github.com/b-cubed-eu/b3data-scripts/releases)
 [![repo status](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 ![GitHub repo size](https://img.shields.io/github/repo-size/b-cubed-eu/b3data-scripts)
 <!-- badges: end -->
@@ -65,7 +66,7 @@ Follow the steps below to run the scripts in a logical order.
 ## 📦 The `b3data` data package
 
 - **Name**: `b3data`
-- **Published at**: [Zenodo](https://zenodo.org/) (DOI to be reserved)
+- **Published at**: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15181097.svg)](https://doi.org/10.5281/zenodo.15181097)
 - **Used in**: [b3verse](https://docs.b-cubed.eu/guides/b3verse/)
 - **Importable in R via**: [frictionless](https://docs.ropensci.org/frictionless/) R package
 
@@ -84,10 +85,10 @@ library(frictionless)
 
 ### Step 2 — Read the package descriptor from Zenodo
 
-> This example uses a placeholder data package; replace with the final URL when ready.
+The content of the data package can be consulted using `read_package()`.
 
 ```{r}
-b3data_package <- read_package("https://zenodo.org/records/10053702/files/datapackage.json")
+b3data_package <- read_package("https://zenodo.org/records/15181098/files/datapackage.json")
 b3data_package
 ```
 
@@ -96,13 +97,17 @@ b3data_package
 Tabular datasets can be loaded using `read_resource()`.
 
 ```{r}
-gps <- read_resource(b3data_package, "gps")
-head(gps)
+bird_cube_belgium <- read_resource(b3data_package, "bird_cube_belgium_mgrs10")
+head(bird_cube_belgium)
 ```
 
-For non-tabular resources (e.g. spatial or raster data), use packages like `sf` or `terra`.
+For non-tabular resources (e.g. spatial or raster data), use packages like `sf` or `terra` directly.
 
-> Example coming soon.
+```{r}
+mgrs10_belgium <- sf::st_read("https://zenodo.org/records/15181098/files/mgrs10_refgrid_belgium.geojson",
+                              quiet = TRUE)
+head(mgrs10_belgium)
+```
 
 ```{r, echo=FALSE}
 # nolint end
