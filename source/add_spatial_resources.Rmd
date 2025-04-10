@@ -57,7 +57,6 @@ Example:
 
 Each dataset includes the following metadata (see: [Frictionless resource spec](https://docs.ropensci.org/frictionless/articles/data-resource.html#properties-implementation)):
 
-- **profile**: `spatial-data-resource`
 - **format**: e.g. `geojson`
 - **title**: e.g. `"MGRS 10 km reference grid for Belgium"`
 - **description**: concise explanation of content
@@ -103,15 +102,14 @@ b3data_package <- read_package(file.path(package_path, "datapackage.json"))
 mgrs10_resource <- list(
   name = "mgrs10_refgrid_belgium",
   path = "mgrs10_refgrid_belgium.geojson",
-  profile = "spatial-data-resource",
   format = "geojson",
   title = "MGRS 10 Km reference grid Belgium",
   description = "MGRS 10 Km reference grid for the mainland of Belgium.",
-  licenses = list(
+  licenses = list(list(
     name = "CC0 1.0",
     path = "https://creativecommons.org/publicdomain/zero/1.0/",
     title = "Creative Commons Zero v1.0 Universal"
-    )
+    ))
   )
 
 b3data_package <- add_manual_resource(

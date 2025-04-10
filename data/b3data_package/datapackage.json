@@ -11,15 +11,19 @@
       "encoding": "utf-8",
       "title": "Occurrence cube for birds in Belgium (MGRS 10 km)",
       "description": "Occurrence cube for birds in Belgium between 2000 en 2024. The taxonomical resolution is 'species' and the temporal resolution is 'year' Spatial aggregation is done using the MGRS grid at 10 km scale. Only grid cells that fall within the 10 km MGRS reference grid for mainland Belgium (see b3data: `mgrs10_refgrid_belgium.geojson`) are included.",
-      "sources": {
-        "title": "GBIF Occurrence Download",
-        "path": "https://doi.org/10.15468/dl.y3wpwk"
-      },
-      "licenses": {
-        "name": "CC BY-NC 4.0",
-        "path": "https://creativecommons.org/licenses/by-nc/4.0/",
-        "title": "Creative Commons Attribution-NonCommercial 4.0 International"
-      },
+      "sources": [
+        {
+          "title": "GBIF Occurrence Download",
+          "path": "https://doi.org/10.15468/dl.y3wpwk"
+        }
+      ],
+      "licenses": [
+        {
+          "name": "CC BY-NC 4.0",
+          "path": "https://creativecommons.org/licenses/by-nc/4.0/",
+          "title": "Creative Commons Attribution-NonCommercial 4.0 International"
+        }
+      ],
       "schema": {
         "fields": [
           {
@@ -60,15 +64,16 @@
     {
       "name": "mgrs10_refgrid_belgium",
       "path": "mgrs10_refgrid_belgium.geojson",
-      "profile": "spatial-data-resource",
       "format": "geojson",
       "title": "MGRS 10 Km reference grid Belgium",
       "description": "MGRS 10 Km reference grid for the mainland of Belgium.",
-      "licenses": {
-        "name": "CC0 1.0",
-        "path": "https://creativecommons.org/publicdomain/zero/1.0/",
-        "title": "Creative Commons Zero v1.0 Universal"
-      }
+      "licenses": [
+        {
+          "name": "CC0 1.0",
+          "path": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "title": "Creative Commons Zero v1.0 Universal"
+        }
+      ]
     }
   ],
   "title": "b3data: Data resources for the b3verse",

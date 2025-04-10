@@ -171,15 +171,15 @@ b3data_package <- create_package() %>%
       "Only grid cells that fall within the 10 km MGRS reference grid for",
       "mainland Belgium (see b3data: `mgrs10_refgrid_belgium.geojson`) are",
       "included."),
-    sources = list(
+    sources = list(list(
       title = "GBIF Occurrence Download",
       path = "https://doi.org/10.15468/dl.y3wpwk"
-    ),
-    licenses = list(
+    )),
+    licenses = list(list(
       name = "CC BY-NC 4.0",
       path = "https://creativecommons.org/licenses/by-nc/4.0/",
       title = "Creative Commons Attribution-NonCommercial 4.0 International"
-    )
+    ))
   )
 ```
 
