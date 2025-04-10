@@ -1,7 +1,7 @@
 {
   "access_right": "open",
   "title": "Scripts used to create the b3data frictionless data package",
-  "description": "<p>This repository contains scripts to create the b3data <a href=\"https://docs.ropensci.org/frictionless/\">frictionless<\/a> data package. This data package includes data resources used across the <a href=\"https://docs.b-cubed.eu/guides/b3verse/\">b3verse<\/a> and will be published on <a href=\"https://zenodo.org/\">Zenodo<\/a>.<\/p>",
+  "description": "<p>This repository contains scripts to create the b3data <a href=\"https://docs.ropensci.org/frictionless/\">frictionless<\/a> data package. This data package includes data resources used across the <a href=\"https://docs.b-cubed.eu/guides/b3verse/\">b3verse<\/a> and is published on <a href=\"https://doi.org/10.5281/zenodo.15181097\">Zenodo<\/a>.<\/p>",
   "keywords": [
     "data package",
     "b3verse",

@@ -28,8 +28,9 @@ Horizon Europe Research and Innovation Programme (ID No 101059592)[^7]
 This repository contains scripts to create the b3data
 [frictionless](https://docs.ropensci.org/frictionless/) data package.
 This data package includes data resources used across the
-[b3verse](https://docs.b-cubed.eu/guides/b3verse/) and will be published
-on [Zenodo](https://zenodo.org/). <!-- description: end -->
+[b3verse](https://docs.b-cubed.eu/guides/b3verse/) and is published on
+[Zenodo](https://doi.org/10.5281/zenodo.15181097).
+<!-- description: end -->
 
 This code is developed in context of **T5.5** of the [B-Cubed
 project](https://b-cubed.eu/).
