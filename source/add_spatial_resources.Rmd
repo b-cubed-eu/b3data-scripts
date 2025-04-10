@@ -64,7 +64,7 @@ Each dataset includes the following metadata (see: [Frictionless resource spec](
 - **licenses**: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
 
 # Datasets
-## MGRS 10 Km reference grid Belgium
+## MGRS 10 km reference grid Belgium
 
 Load the data.
 
@@ -103,10 +103,10 @@ mgrs10_resource <- list(
   name = "mgrs10_refgrid_belgium",
   path = "mgrs10_refgrid_belgium.geojson",
   format = "geojson",
-  title = "MGRS 10 Km reference grid Belgium",
-  description = "MGRS 10 Km reference grid for the mainland of Belgium.",
+  title = "MGRS 10 km reference grid Belgium",
+  description = "MGRS 10 km reference grid for the mainland of Belgium.",
   licenses = list(list(
-    name = "CC0 1.0",
+    name = "CC0-1.0",
     path = "https://creativecommons.org/publicdomain/zero/1.0/",
     title = "Creative Commons Zero v1.0 Universal"
     ))

@@ -19,7 +19,7 @@
       ],
       "licenses": [
         {
-          "name": "CC BY-NC 4.0",
+          "name": "CC-BY-NC-4.0",
           "path": "https://creativecommons.org/licenses/by-nc/4.0/",
           "title": "Creative Commons Attribution-NonCommercial 4.0 International"
         }
@@ -65,11 +65,11 @@
       "name": "mgrs10_refgrid_belgium",
       "path": "mgrs10_refgrid_belgium.geojson",
       "format": "geojson",
-      "title": "MGRS 10 Km reference grid Belgium",
-      "description": "MGRS 10 Km reference grid for the mainland of Belgium.",
+      "title": "MGRS 10 km reference grid Belgium",
+      "description": "MGRS 10 km reference grid for the mainland of Belgium.",
       "licenses": [
         {
-          "name": "CC0 1.0",
+          "name": "CC0-1.0",
           "path": "https://creativecommons.org/publicdomain/zero/1.0/",
           "title": "Creative Commons Zero v1.0 Universal"
         }
@@ -80,7 +80,7 @@
   "description": "This data package contains data resources to be used across the b3verse (https://docs.b-cubed.eu/guides/b3verse/). This includes example datasets (occurrence cubes) as well as spatial resources like reference grids or raster data.",
   "keywords": ["data cubes", "b3verse", "frictionless", "biodiversity"],
   "licenses": {
-    "name": "CC BY-NC 4.0",
+    "name": "CC-BY-NC-4.0",
     "path": "https://creativecommons.org/licenses/by-nc/4.0/",
     "title": "Creative Commons Attribution-NonCommercial 4.0 International"
   },
