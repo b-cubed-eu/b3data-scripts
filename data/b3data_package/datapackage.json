@@ -28,7 +28,7 @@
         "fields": [
           {
             "name": "year",
-            "type": "number"
+            "type": "integer"
           },
           {
             "name": "mgrscode",
@@ -36,7 +36,7 @@
           },
           {
             "name": "specieskey",
-            "type": "number"
+            "type": "integer"
           },
           {
             "name": "species",
@@ -48,7 +48,7 @@
           },
           {
             "name": "n",
-            "type": "number"
+            "type": "integer"
           },
           {
             "name": "mincoordinateuncertaintyinmeters",
@@ -56,7 +56,7 @@
           },
           {
             "name": "familycount",
-            "type": "number"
+            "type": "integer"
           }
         ]
       }

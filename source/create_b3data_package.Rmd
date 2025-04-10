@@ -152,7 +152,9 @@ ggplot() + geom_sf(data = utm10_bel)
 ```{r}
 # Only select grid cells from reference grid
 bird_cube_belgium_mgrs10 <- bird_cube_belgium_mgrs10_full %>%
-  filter(substring(mgrscode, 4) %in% utm10_bel$TAG)
+  filter(substring(mgrscode, 4) %in% utm10_bel$TAG) %>%
+  # Transform columns to integers
+  mutate(across(c("year", "specieskey", "n", "familycount"), as.integer))
 ```
 
 We create the package and add the dataset.
