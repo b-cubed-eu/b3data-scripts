@@ -8,6 +8,7 @@
 status](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 ![GitHub repo
 size](https://img.shields.io/github/repo-size/b-cubed-eu/b3data-scripts)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15190796.svg)](https://doi.org/10.5281/zenodo.15190796)
 <!-- badges: end -->
 
 # Scripts used to create the b3data frictionless data package
