@@ -61,7 +61,7 @@ Each dataset includes the following metadata (see: [Frictionless resource spec](
 - **title**: e.g. `"MGRS 10 km reference grid for Belgium"`
 - **description**: concise explanation of content
 - **sources**: source if applicable
-- **licenses**: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+- **licenses**: [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/)
 
 # Datasets
 ## MGRS 10 km reference grid Belgium

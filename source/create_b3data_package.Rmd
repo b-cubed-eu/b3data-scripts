@@ -68,7 +68,7 @@ Each dataset includes the following metadata (see: [Frictionless resource spec](
 - **title**: e.g. `"Occurrence cube for birds in Belgium (MGRS 10 km)"`
 - **description**: concise explanation of content, region, time period, method
 - **sources**: GBIF DOI
-- **licenses**: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) (based on GBIF source license)
+- **licenses**: [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/)
 
 ## Package-level Metadata
 
@@ -173,10 +173,10 @@ b3data_package <- create_package() %>%
       path = "https://doi.org/10.15468/dl.y3wpwk"
     )),
     licenses = list(list(
-      name = "CC-BY-NC-4.0",
-      path = "https://creativecommons.org/licenses/by-nc/4.0/",
-      title = "Creative Commons Attribution-NonCommercial 4.0 International"
-    ))
+      name = "CC0-1.0",
+      path = "https://creativecommons.org/publicdomain/zero/1.0/",
+      title = "Creative Commons Zero v1.0 Universal"
+      ))
   )
 ```
 
