@@ -72,17 +72,12 @@ Each dataset includes the following metadata (see: [Frictionless resource spec](
 
 ## Package-level Metadata
 
-Metadata for the entire data package (see: [Frictionless Data Package spec](https://specs.frictionlessdata.io/data-package/#metadata)):
+Metadata for the entire data package (see: [Frictionless Data Package spec](https://specs.frictionlessdata.io/data-package/#metadata)).
+This will be rather limited to avoid repetition with metadata of Zenodo deposit:
 
 - **name**: `b3data`
-- **id**: reserved Zenodo DOI
-- **title**: `b3data: Data resources for the b3verse`
-- **description**: overview of purpose, content, and structure of the data package
-- **keywords**: e.g. `"biodiversity", "data cube", "b3verse", "GBIF", "frictionless"`
-- **licenses**: [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+- **id**: reserved Zenodo DOI (version specific)
 - **version**: semantic versioning string, e.g. 0.1.0
-- **sources**: GitHub repository [b3data-scripts](https://github.com/b-cubed-eu/b3data-scripts)
-- **contributors**: name, ORCID, and roles
 
 # Datasets
 ## Birds in Belgium (MGRS 10 km)
@@ -198,62 +193,11 @@ b3data_package <- append(b3data_package,
                          c(name = "b3data"),
                          after = 0)
 b3data_package <- append(b3data_package,
-                         c(id = "https://doi.org/10.5281/zenodo.15181097"),
+                         c(id = "https://doi.org/10.5281/zenodo.15181098"),
                          after = 1)
 b3data_package <- append(b3data_package,
-                         c(title = "b3data: Data resources for the b3verse"),
-                         after = 3)
-b3data_package <- append(
-  b3data_package,
-  c(description = paste(
-    "This data package contains data resources to be used across the b3verse",
-    "(https://docs.b-cubed.eu/guides/b3verse/).",
-    "This includes example datasets (occurrence cubes) as well as spatial",
-    "resources like reference grids or raster data."
-  )),
-  after = 4)
-b3data_package <- append(
-  b3data_package,
-  c(keywords = list(list(
-    "data cubes", "b3verse", "frictionless", "biodiversity"
-    ))),
-  after = 5)
-b3data_package <- append(
-  b3data_package,
-  c(licenses = list(list(
-    name = "CC-BY-NC-4.0",
-    path = "https://creativecommons.org/licenses/by-nc/4.0/",
-    title = "Creative Commons Attribution-NonCommercial 4.0 International"
-    ))),
-  after = 6)
-b3data_package <- append(b3data_package,
                          c(version = "0.1.0"),
-                         after = 7)
-b3data_package <- append(
-  b3data_package,
-  c(sources = list(list(
-    title = "b3data-scripts",
-    path = "https://github.com/b-cubed-eu/b3data-scripts"
-    ))),
-  after = 8)
-b3data_package <- append(
-  b3data_package,
-  c(contributors = list(list(
-    list(
-      title = "Ward Langeraert",
-      path = "https://orcid.org/0000-0002-5900-8109",
-      email = "ward.langeraert@inbo.be",
-      role = "author",
-      organization = "Research Institute for Nature and Forest (INBO)"
-      ),
-    list(
-      title = "Toon Van Daele",
-      path = "https://orcid.org/0000-0002-1362-853X",
-      role = "contributor",
-      organization = "Research Institute for Nature and Forest (INBO)"
-      )
-    ))),
-  after = 9)
+                         after = 2)
 
 # Warning: append() drops the custom datapackage class.
 # It can be added again by running b3data_package through create_package()
