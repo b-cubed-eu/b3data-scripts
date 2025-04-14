@@ -108,7 +108,7 @@ like `sf` or `terra` directly.
 
 ``` r
 mgrs10_belgium <- sf::st_read(
-  "https://zenodo.org/records/15181098/files/mgrs10_refgrid_belgium.geojson",
+  "https://zenodo.org/records/15181098/files/mgrs10_refgrid_belgium.gpkg",
   quiet = TRUE)
 head(mgrs10_belgium)
 #> Simple feature collection with 6 features and 1 field

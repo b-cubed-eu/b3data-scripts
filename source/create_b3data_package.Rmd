@@ -38,7 +38,7 @@ Create [frictionless](https://docs.ropensci.org/frictionless/) data package with
 # Methods
 
 This report focuses on creating the **b3data** frictionless data package for tabular datasets.  
-A separate report adds spatial resources (e.g. GeoJSON, raster) to the same data package.
+A separate report adds spatial resources (e.g. GeoPackage, raster) to the same data package.
 
 ## Data Package Overview
 
@@ -134,7 +134,7 @@ bird_cube_belgium_mgrs10_full <- download_occ_cube(
 )
 ```
 
-We only select the grid cells that belong to the MGRS 10 km reference grid for the mainland of Belgium (see b3data `mgrs10_refgrid_belgium.geojson`).
+We only select the grid cells that belong to the MGRS 10 km reference grid for the mainland of Belgium (see b3data `mgrs10_refgrid_belgium.gpkg`).
 
 ```{r}
 # Read reference grid
@@ -166,7 +166,7 @@ b3data_package <- create_package() %>%
       "the temporal resolution is 'year'",
       "Spatial aggregation is done using the MGRS grid at 10 km scale.",
       "Only grid cells that fall within the 10 km MGRS reference grid for",
-      "mainland Belgium (see b3data: `mgrs10_refgrid_belgium.geojson`) are",
+      "mainland Belgium (see b3data: `mgrs10_refgrid_belgium.gpkg`) are",
       "included."),
     sources = list(list(
       title = "GBIF Occurrence Download",
@@ -193,10 +193,10 @@ b3data_package <- append(b3data_package,
                          c(name = "b3data"),
                          after = 0)
 b3data_package <- append(b3data_package,
-                         c(id = "https://doi.org/10.5281/zenodo.15181098"),
+                         c(id = "https://doi.org/10.5281/zenodo.15211029"),
                          after = 1)
 b3data_package <- append(b3data_package,
-                         c(version = "0.1.0"),
+                         c(version = "0.1.2"),
                          after = 2)
 
 # Warning: append() drops the custom datapackage class.

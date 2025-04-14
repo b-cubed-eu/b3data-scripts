@@ -1,7 +1,7 @@
 {
   "name": "b3data",
-  "id": "https://doi.org/10.5281/zenodo.15181098",
-  "version": "0.1.0",
+  "id": "https://doi.org/10.5281/zenodo.15211029",
+  "version": "0.1.2",
   "resources": [
     {
       "name": "bird_cube_belgium_mgrs10",
@@ -11,7 +11,7 @@
       "mediatype": "text/csv",
       "encoding": "utf-8",
       "title": "Occurrence cube for birds in Belgium (MGRS 10 km)",
-      "description": "Occurrence cube for birds in Belgium between 2000 en 2024. The taxonomical resolution is 'species' and the temporal resolution is 'year' Spatial aggregation is done using the MGRS grid at 10 km scale. Only grid cells that fall within the 10 km MGRS reference grid for mainland Belgium (see b3data: `mgrs10_refgrid_belgium.geojson`) are included.",
+      "description": "Occurrence cube for birds in Belgium between 2000 en 2024. The taxonomical resolution is 'species' and the temporal resolution is 'year' Spatial aggregation is done using the MGRS grid at 10 km scale. Only grid cells that fall within the 10 km MGRS reference grid for mainland Belgium (see b3data: `mgrs10_refgrid_belgium.gpkg`) are included.",
       "sources": [
         {
           "title": "GBIF Occurrence Download",
@@ -64,10 +64,10 @@
     },
     {
       "name": "mgrs10_refgrid_belgium",
-      "path": "mgrs10_refgrid_belgium.geojson",
-      "format": "geojson",
+      "path": "mgrs10_refgrid_belgium.gpkg",
+      "format": "gpkg",
       "title": "MGRS 10 km reference grid Belgium",
-      "description": "MGRS 10 km reference grid for the mainland of Belgium.",
+      "description": "MGRS 10 km reference grid for the mainland of Belgium. EPSG:32631 (WGS 84 / UTM zone 31N).",
       "licenses": [
         {
           "name": "CC0-1.0",
