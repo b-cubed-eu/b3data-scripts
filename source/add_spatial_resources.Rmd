@@ -39,7 +39,7 @@ Add spatial data resources to b3data frictionless data package.
 
 # Methods
 
-This report focuses on adding spatial resources (e.g. GeoJSON, raster) to the **b3data** frictionless data package.
+This report focuses on adding spatial resources (e.g. GeoPackage, raster) to the **b3data** frictionless data package.
 
 ## Source Data
 
@@ -57,7 +57,7 @@ Example:
 
 Each dataset includes the following metadata (see: [Frictionless resource spec](https://docs.ropensci.org/frictionless/articles/data-resource.html#properties-implementation)):
 
-- **format**: e.g. `geojson`
+- **format**: e.g. `gpkg`
 - **title**: e.g. `"MGRS 10 km reference grid for Belgium"`
 - **description**: concise explanation of content
 - **sources**: source if applicable
@@ -77,20 +77,22 @@ ggplot() + geom_sf(data = utm10_bel)
 ```
 
 Clean data and transform cell codes to MGRS.
+Convert to EPSG:32631 (WGS 84 / UTM zone 31N).
 
 ```{r}
 mgrs10_refgrid_belgium <- utm10_bel %>%
   select(utm_tag = TAG, geometry) %>%
   mutate(mgrscode = ifelse(grepl("^[A-G]", utm_tag), paste0("31U", utm_tag),
                            paste0("32U", utm_tag))) %>%
-  select(mgrscode, geometry)
+  select(mgrscode, geometry) %>%
+  st_transform(32631)
 ```
 
 Write to data package and add metadata.
 
 ```{r}
 st_write(mgrs10_refgrid_belgium,
-         file.path(package_path, "mgrs10_refgrid_belgium.geojson"),
+         file.path(package_path, "mgrs10_refgrid_belgium.gpkg"),
          delete_dsn = TRUE)
 ```
 
@@ -101,25 +103,28 @@ b3data_package <- read_package(file.path(package_path, "datapackage.json"))
 # Add resource to data package
 mgrs10_resource <- list(
   name = "mgrs10_refgrid_belgium",
-  path = "mgrs10_refgrid_belgium.geojson",
-  format = "geojson",
+  path = "mgrs10_refgrid_belgium.gpkg",
+  format = "gpkg",
   title = "MGRS 10 km reference grid Belgium",
-  description = "MGRS 10 km reference grid for the mainland of Belgium.",
+  description = paste("MGRS 10 km reference grid for the mainland of Belgium.",
+                      "EPSG:32631 (WGS 84 / UTM zone 31N)."),
   licenses = list(list(
     name = "CC0-1.0",
     path = "https://creativecommons.org/publicdomain/zero/1.0/",
     title = "Creative Commons Zero v1.0 Universal"
-    ))
-  )
+  ))
+)
 
 b3data_package <- add_manual_resource(
-  b3data_package, mgrs10_resource, replace = TRUE)
+  b3data_package, mgrs10_resource, replace = TRUE
+)
 
 # Write package to directory
 write_package(
   package = b3data_package,
   directory = package_path,
-  compress = TRUE)
+  compress = TRUE
+)
 ```
 
 ## EEA 100 km reference grid Europe

@@ -88,7 +88,7 @@ library(frictionless)
 The content of the data package can be consulted using `read_package()`.
 
 ```{r}
-b3data_package <- read_package("https://zenodo.org/records/15181098/files/datapackage.json")
+b3data_package <- read_package("https://zenodo.org/records/15211029/files/datapackage.json")
 b3data_package
 ```
 
@@ -105,7 +105,7 @@ For non-tabular resources (e.g. spatial or raster data), use packages like `sf` 
 
 ```{r}
 mgrs10_belgium <- sf::st_read(
-  "https://zenodo.org/records/15181098/files/mgrs10_refgrid_belgium.geojson",
+  "https://zenodo.org/records/15211029/files/mgrs10_refgrid_belgium.gpkg",
   quiet = TRUE)
 head(mgrs10_belgium)
 ```
