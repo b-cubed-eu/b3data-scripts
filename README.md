@@ -75,12 +75,12 @@ library(frictionless)
 The content of the data package can be consulted using `read_package()`.
 
 ``` r
-b3data_package <- read_package("https://zenodo.org/records/15181098/files/datapackage.json")
+b3data_package <- read_package("https://zenodo.org/records/15211029/files/datapackage.json")
 b3data_package
 #> A Data Package with 2 resources:
 #> • bird_cube_belgium_mgrs10
 #> • mgrs10_refgrid_belgium
-#> For more information, see <https://doi.org/10.5281/zenodo.15181098>.
+#> For more information, see <https://doi.org/10.5281/zenodo.15211029>.
 #> Use `unclass()` to print the Data Package as a list.
 ```
 
@@ -109,21 +109,21 @@ like `sf` or `terra` directly.
 
 ``` r
 mgrs10_belgium <- sf::st_read(
-  "https://zenodo.org/records/15181098/files/mgrs10_refgrid_belgium.gpkg",
+  "https://zenodo.org/records/15211029/files/mgrs10_refgrid_belgium.gpkg",
   quiet = TRUE)
 head(mgrs10_belgium)
 #> Simple feature collection with 6 features and 1 field
 #> Geometry type: POLYGON
 #> Dimension:     XY
-#> Bounding box:  xmin: 13919.31 ymin: 159175.7 xmax: 34107.28 ymax: 209553.2
-#> Geodetic CRS:  WGS 84
-#>   mgrscode                       geometry
-#> 1  31UDS65 POLYGON ((23939.64 190365.5...
-#> 2  31UDS66 POLYGON ((24123.5 200367.5,...
-#> 3  31UDS72 POLYGON ((33389.37 160175.9...
-#> 4  31UDS73 POLYGON ((33573.52 170177.6...
-#> 5  31UDS74 POLYGON ((33757.62 180179.5...
-#> 6  31UDS75 POLYGON ((33941.67 190181.5...
+#> Bounding box:  xmin: 460000.1 ymin: 5620000 xmax: 480000.1 ymax: 5670000
+#> Projected CRS: WGS 84 / UTM zone 31N
+#>   mgrscode                           geom
+#> 1  31UDS65 POLYGON ((470000.1 5651000,...
+#> 2  31UDS66 POLYGON ((470000.1 5661000,...
+#> 3  31UDS72 POLYGON ((480000 5621000, 4...
+#> 4  31UDS73 POLYGON ((480000.1 5631000,...
+#> 5  31UDS74 POLYGON ((480000.1 5641000,...
+#> 6  31UDS75 POLYGON ((480000.1 5651000,...
 ```
 
 ## 📁 Repository structure
