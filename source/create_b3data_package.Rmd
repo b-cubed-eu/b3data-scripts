@@ -167,7 +167,8 @@ b3data_package <- create_package() %>%
       "Spatial aggregation is done using the MGRS grid at 10 km scale.",
       "Only grid cells that fall within the 10 km MGRS reference grid for",
       "mainland Belgium (see b3data: `mgrs10_refgrid_belgium.gpkg`) are",
-      "included."),
+      "included."
+    ),
     sources = list(list(
       title = "GBIF Occurrence Download",
       path = "https://doi.org/10.15468/dl.y3wpwk"
@@ -176,7 +177,7 @@ b3data_package <- create_package() %>%
       name = "CC0-1.0",
       path = "https://creativecommons.org/publicdomain/zero/1.0/",
       title = "Creative Commons Zero v1.0 Universal"
-      ))
+    ))
   )
 ```
 
@@ -215,5 +216,6 @@ dir.create(package_path, showWarnings = FALSE, recursive = TRUE)
 write_package(
   package = b3data_package,
   directory = package_path,
-  compress = TRUE)
+  compress = TRUE
+)
 ```

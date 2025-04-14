@@ -112,17 +112,19 @@ mgrs10_resource <- list(
     name = "CC0-1.0",
     path = "https://creativecommons.org/publicdomain/zero/1.0/",
     title = "Creative Commons Zero v1.0 Universal"
-    ))
-  )
+  ))
+)
 
 b3data_package <- add_manual_resource(
-  b3data_package, mgrs10_resource, replace = TRUE)
+  b3data_package, mgrs10_resource, replace = TRUE
+)
 
 # Write package to directory
 write_package(
   package = b3data_package,
   directory = package_path,
-  compress = TRUE)
+  compress = TRUE
+)
 ```
 
 ## EEA 100 km reference grid Europe
