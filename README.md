@@ -5,7 +5,7 @@
 ![GitHub](https://img.shields.io/github/license/b-cubed-eu/b3data-scripts)
 [![Release](https://img.shields.io/github/release/b-cubed-eu/b3data-scripts.svg)](https://github.com/b-cubed-eu/b3data-scripts/releases)
 [![repo
-status](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 ![GitHub repo
 size](https://img.shields.io/github/repo-size/b-cubed-eu/b3data-scripts)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15190796.svg)](https://doi.org/10.5281/zenodo.15190796)
